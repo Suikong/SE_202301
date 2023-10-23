@@ -1,0 +1,67 @@
+<template>
+  <div class="calculator">
+    <div class="display">
+      <span>{{ expression }}</span>
+    </div>
+    <div class="buttons">
+      <button v-for="(num, i) in numbers" :key="i">{{ num }}</button>
+      <button v-for="(op, i) in operators" :key="i">{{ op }}</button>
+      <button @click="clear()">C</button>
+      <button @click="equal()">=</button>
+    </div>
+  </div>
+</template>
+ 
+<script>
+export default {
+  data() {
+    return {
+      expression: "",
+      numbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+      operators: ["+", "-", "*", "/"],
+    };
+  },
+  methods: {
+    clear() {
+      this.expression = "";
+    },
+    equal() {
+      // TODO: 发送请求到后端进行计算
+    },
+  },
+};
+</script>
+ 
+<style>
+.calculator {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ 
+.display {
+  width: 100%;
+  height: 50px;
+  font-size: 2em;
+}
+ 
+.buttons {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.button {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+</style>
